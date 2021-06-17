@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d49357d8f157004d9f94a1313a77560, type: 3}
+  m_Name: 1Root
+  m_EditorClassIdentifier: 
+  _id: 1
+  _name: Immobilisation
+  _description: Immobilise la cible
+  _isNegatif: 1
+  _isCanalisation: 0
+  _timerLife: 6
+  _isProc: 0
+  _timerProc: 0
+  _isAura: 0
+  _isTargetUndead: 0
+  _speedProdValue: 0
+  _speedMoveValue: -100
+  _speedAttaque: 0
+  _defContandant: 0
+  _defTranchant: 0
+  _defMagique: 0
+  _boostDamage: 0
+  _isLifeSteal: 0
+  _damage: 0
+  _heal: 0
+  _damageAround: 0
+  _typeDamage: 0
+  _moralModificateur: 0
+  _isInvisible: 0

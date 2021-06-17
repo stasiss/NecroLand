@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1399507642546599153
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1399507642546599159}
+  - component: {fileID: 1399507642546599158}
+  - component: {fileID: 1399507642546599156}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1399507642546599159
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1399507642546599153}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1399507642546599158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1399507642546599153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f8cc2725077d2c4082a617160ea3f41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  unitBDD: {fileID: 11400000, guid: 65fe0f0cedfb3ec47afedacfad23ab1b, type: 2}
+  skillBDD: {fileID: 11400000, guid: 2fb2105e25dcc8f44b16376814068d8e, type: 2}
+  tiles:
+  - {fileID: 2695298148586767334, guid: b20a5951e3884ca429d9c031b3e11661, type: 3}
+  batiments:
+  - {fileID: 2695298148586767334, guid: 92d8f20905b934b428bddf0085988a6a, type: 3}
+  - {fileID: 2695298148586767334, guid: bb576d9b1f01cf5419834d19f667c69a, type: 3}
+  - {fileID: 2695298148586767334, guid: 205a89998a562c742b2f3a3355408033, type: 3}
+  - {fileID: 2695298148586767334, guid: b3453196acac9e2499e53b4ffcd6a993, type: 3}
+  timeCalculRessource: 1
+  playerNecro: {fileID: 0}
+  armeeNecro: []
+  mana: 50
+  manaMax: 100
+  manaReserve: 0
+  manaRegen: 1
+  armeeHuman: []
+  playersHumans: []
+  food: 50
+  consumptionFood: 0
+  wood: 50
+  iron: 50
+--- !u!114 &1399507642546599156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1399507642546599153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 0
+  serverOnly: 0
+  visible: 0
+  m_AssetId: 
+  hasSpawned: 0

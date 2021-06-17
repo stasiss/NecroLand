@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a27623e6add70214c8ec2b6a0b2e4cd8, type: 3}
+  m_Name: 114Guerilla
+  m_EditorClassIdentifier: 
+  _id: 114
+  _name: Guerilla
+  _description: "Rend les unit\xE9s invisibles jusqu'\xE0 la prochaine action"
+  _typeSkill: 4
+  _manaCost: 30
+  _timeCast: 3
+  _cdTime: 2
+  _isCiblageSkill: 1
+  _typeCible: 0
+  _isUndeadCible: 0
+  _isHumansCible: 1
+  _isAura: 0
+  _isCanalisation: 0
+  _isPurification: 0
+  _range: 8
+  _isAoE: 1
+  _sizeAoE: 4
+  _statusArray:
+  - {fileID: 11400000, guid: 1f8c73780b379e348993adb0867818e2, type: 2}
+  _domage: 0
+  _heal: 0
+  _moralChanger: 0
+  _probaProc: 0
+  _unit: {fileID: 0}
+  _isUndead: 0
+  _costBone: 0
+  _costFlesh: 0
+  _costIron: 0
+  _costWood: 0
+  _costFood: 0

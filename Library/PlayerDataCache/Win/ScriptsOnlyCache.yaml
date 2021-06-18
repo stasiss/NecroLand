@@ -27,8 +27,6 @@ ScriptsOnlyBuild:
     Mirror.Components.dll:
     - Mirror.NetworkTransform
     - Mirror.NetworkTransformChild
-    Mirror.Editor.dll:
-    - Mirror.NetworkBehaviourInspector
     Mirror.dll:
     - Mirror.NetworkIdentity
     - Mirror.NetworkManager
@@ -1238,7 +1236,7 @@ ScriptsOnlyBuild:
     className: Slider
   - hash:
       serializedVersion: 2
-      Hash: 8a61ab8f2f6ed7a4bfc801591b07306e
+      Hash: 595910822258c355f1f27a47a100ce53
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerController

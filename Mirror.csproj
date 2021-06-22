@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{CC72F721-A46F-3453-2146-E01C8DA07B86}</ProjectGuid>
+    <ProjectGuid>{1A7B17EC-4C7F-37B5-42B6-7C82E6700B47}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Mirror</AssemblyName>
@@ -315,16 +315,16 @@
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/16.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
     <Reference Include="Mono.CecilX">
-      <HintPath>C:/Users/flavi/OneDrive/Documents/GitUnity/NecroReseau/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.dll</HintPath>
+      <HintPath>C:/Users/flavi/OneDrive/Documents/GitUnity/NecroLand/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.dll</HintPath>
     </Reference>
     <Reference Include="Mono.CecilX.Mdb">
-      <HintPath>C:/Users/flavi/OneDrive/Documents/GitUnity/NecroReseau/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Mdb.dll</HintPath>
+      <HintPath>C:/Users/flavi/OneDrive/Documents/GitUnity/NecroLand/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Mdb.dll</HintPath>
     </Reference>
     <Reference Include="Mono.CecilX.Pdb">
-      <HintPath>C:/Users/flavi/OneDrive/Documents/GitUnity/NecroReseau/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Pdb.dll</HintPath>
+      <HintPath>C:/Users/flavi/OneDrive/Documents/GitUnity/NecroLand/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Pdb.dll</HintPath>
     </Reference>
     <Reference Include="Mono.CecilX.Rocks">
-      <HintPath>C:/Users/flavi/OneDrive/Documents/GitUnity/NecroReseau/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Rocks.dll</HintPath>
+      <HintPath>C:/Users/flavi/OneDrive/Documents/GitUnity/NecroLand/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Rocks.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.14f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
@@ -672,23 +672,23 @@
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.14f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>C:/Users/flavi/OneDrive/Documents/GitUnity/NecroReseau/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>C:/Users/flavi/OneDrive/Documents/GitUnity/NecroLand/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>C:/Users/flavi/OneDrive/Documents/GitUnity/NecroReseau/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>C:/Users/flavi/OneDrive/Documents/GitUnity/NecroLand/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Mirror.CompilerSymbols.csproj">
-      <Project>{AE7E7214-A5FD-CF80-5E7B-90DB6C324F2C}</Project>
+      <Project>{630AC4C4-2B52-BA5D-3B05-FAE427DC12E6}</Project>
       <Name>Mirror.CompilerSymbols</Name>
     </ProjectReference>
     <ProjectReference Include="Telepathy.csproj">
-      <Project>{FCF22BEA-65B4-6E72-33F7-ABC87A542075}</Project>
+      <Project>{2E86D3D1-2D42-6668-6159-CCEB2296313F}</Project>
       <Name>Telepathy</Name>
     </ProjectReference>
     <ProjectReference Include="kcp2k.csproj">
-      <Project>{49766197-403B-0834-7FC8-69E357F7B40F}</Project>
+      <Project>{53238E76-FA75-52FE-E934-207C1AECDB93}</Project>
       <Name>kcp2k</Name>
     </ProjectReference>
   </ItemGroup>

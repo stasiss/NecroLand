@@ -5,10 +5,12 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AI;
 
 public class Unit : NetworkBehaviour
 {
     public int id;
+    public NavMeshAgent agent;
     [HideInInspector] public bool isUndead;
     [HideInInspector] public int maxHealth;
     [HideInInspector] public bool isAlive = true;
@@ -24,6 +26,7 @@ public class Unit : NetworkBehaviour
     [HideInInspector] [SyncVar] public float speed, speedBase;
     [HideInInspector] [SyncVar] public float range;
     [HideInInspector] [SyncVar] public float fieldOfView;
+    [HideInInspector] [SyncVar] public float sizeZoneOfAura;
     [HideInInspector] public float rangeToAggro;
     [HideInInspector] [SyncVar] public float cdAttaque, cdAttaqueBase;
     public SyncList<Skills> skillsList = new SyncList<Skills>();
@@ -61,13 +64,6 @@ public class Unit : NetworkBehaviour
     [Header("Animation")]
     private bool isMoving;
     private ActionUnite currentAction;
-    public Mesh[] idleAnims;
-    public Mesh[] moveAnims;
-    public Mesh[] attqAnims;
-    private MeshFilter display;
-    private int idImage;
-    private float tickNextImage;
-    public float timeNextImage;
 
     private GameObject target;
     [SyncVar] public Vector3 targetMove;
@@ -82,7 +78,6 @@ public class Unit : NetworkBehaviour
     {
         cdAttaqueBase = cdAttaque;
         speedBase = speed;
-        display = GetComponentInChildren<MeshFilter>();
         isUndead = CompareTag("Undead");
         if (isServer)
         {
@@ -100,13 +95,13 @@ public class Unit : NetworkBehaviour
             if (isReturn)
             {
                 isReturn = false;
-                targetMove = VectorZeroY(targetVillage.transform.position);
+                agent.destination = VectorZeroY(targetVillage.transform.position);
                 RotationToUnit();
             }
             else
             {
                 isReturn = true;
-                targetMove = VectorZeroY(GameObject.Find("Castle").transform.position);
+                agent.destination = VectorZeroY(GameObject.Find("Castle").transform.position);
                 RotationToUnit();
             }
         }
@@ -238,7 +233,8 @@ public class Unit : NetworkBehaviour
             return;
         if (isServer)
         {
-            targetMove = newMove;
+            targetFinishMove = newMove;
+            agent.destination = newMove;
             RotationToUnit();
         }
     }
@@ -269,7 +265,6 @@ public class Unit : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        Anim(currentAction);
         if (statusList.Count > 0)
         {
             for (int i = statusList.Count - 1; i >= 0; i--)
@@ -353,13 +348,13 @@ public class Unit : NetworkBehaviour
     }
     private void Aggro()
     {
-        targetMove = target.transform.position;
+        agent.destination = target.transform.position;
         RotationToUnit();
     }
 
     private void RotationToUnit()
     {
-        Vector3 lookTo = VectorZeroY(targetMove - transform.position);
+        Vector3 lookTo = VectorZeroY(targetFinishMove - transform.position);
         GetComponentInChildren<Rigidbody>().transform.rotation = Quaternion.FromToRotation(Vector3.forward, lookTo);
     }
     public void Selected(bool isSelect)
@@ -471,7 +466,6 @@ public class Unit : NetworkBehaviour
         if (Time.time > tickAttaque && (target.transform.position - transform.position).magnitude < range)
         {
             TargetMove(Vector3.zero);
-            ResetAnim(ActionUnite.attack);
             tickAttaque = Time.time + cdAttaque;
             int currentDamage = damage;
             if (CompareTag("Humans"))
@@ -538,16 +532,12 @@ public class Unit : NetworkBehaviour
     {
         if ((targetMove - transform.position).magnitude > 1)
         {
-            if (!isMoving)
-                ResetAnim(ActionUnite.mouv);
             isMoving = true;
             Vector3 deplacement = (targetMove - transform.position).normalized;
             transform.Translate(VectorZeroY(deplacement) * speed * Time.fixedDeltaTime);
         }
         else
         {
-            if (isMoving)
-                ResetAnim(ActionUnite.idle);
             isMoving = false;
             currentAction = ActionUnite.idle;
             targetMove = Vector3.zero;
@@ -587,61 +577,6 @@ public class Unit : NetworkBehaviour
         }
     }
 
-    public int ChoiceMeshAnim(ActionUnite act, int i)
-    {
-        int result;
-        switch (act)
-        {
-            case ActionUnite.mouv:
-                result = moveAnims.Length;
-                if (moveAnims.Length != 0)
-                {
-                    display.sharedMesh = moveAnims[idImage];
-                }
-                break;
-            case ActionUnite.attack:
-                result = attqAnims.Length;
-                if (attqAnims.Length != 0)
-                    display.sharedMesh = attqAnims[idImage];
-                break;
-            case ActionUnite.idle:
-            default:
-                result = idleAnims.Length;
-                if (idleAnims.Length != 0)
-                    display.sharedMesh = idleAnims[idImage];
-                break;
-        }
-
-        return result;
-    }
-    public void ResetAnim(ActionUnite act)
-    {
-        currentAction = act;
-        tickNextImage = Time.time + timeNextImage;
-        idImage = 0;
-        ChoiceMeshAnim(act, 0);
-    }
-    public void Anim(ActionUnite act)
-    {
-        if (Time.time >= tickNextImage)
-        {
-            tickNextImage = Time.time + timeNextImage;
-            int i = ChoiceMeshAnim(act, idImage);
-            idImage++;
-            if (idImage >= i)
-            {
-                if (currentAction == ActionUnite.attack)
-                {
-                    if (isMoving)
-                        currentAction = ActionUnite.mouv;
-                    else
-                        currentAction = ActionUnite.idle;
-
-                }
-                idImage = 0;
-            }
-        }
-    }
     public GameObject FindTheCloseEnemy(bool isCorpseSearch)
     {
         List<GameObject> targets;
@@ -708,6 +643,7 @@ public class Unit : NetworkBehaviour
         speed = ud.Speed;
         range = ud.Range;
         fieldOfView = ud.FieldOfView;
+        transform.Find("FoV").transform.localScale = new Vector3(fieldOfView, 0, fieldOfView);
         rangeToAggro = fieldOfView - 2;
         cdAttaque = ud.CdAttack;
         if (ud.SkillsList.Count > 0)

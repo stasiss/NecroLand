@@ -88,10 +88,14 @@ public class Village : NetworkBehaviour
     /// fais remonter le moral de toutes les unités militaires autour du village
     /// </summary>
     public void ModifVillageMoralGlobal()
-    {        
-        foreach (Unit u in GameManager.instance.armeeHuman.Where(e => Vector3.Distance(e.transform.position, transform.position) < 18 && e.GetComponent<Unit>() != null).Select(e => e.GetComponent<Unit>()))
+    {
+        if (GameManager.instance.armeeHuman.Any(e => Vector3.Distance(e.transform.position, transform.position) < 18 && e.GetComponent<Unit>() != null))
         {
-            u.MoralChanger(5);
+            foreach (Unit u in GameManager.instance.armeeHuman.Where(e => Vector3.Distance(e.transform.position, transform.position) < 18 && e.GetComponent<Unit>() != null).Select(e => e.GetComponent<Unit>()))
+            {
+                Debug.Log(u.name);
+                u.MoralChanger(5);
+            }
         }
     }
     public void CorruptAcolyte()

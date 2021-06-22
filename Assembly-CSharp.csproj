@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{A09559A0-3EF7-12C2-55B9-69271AFB7D54}</ProjectGuid>
+    <ProjectGuid>{0EB2A917-818A-A9F8-F1EF-E428FED0A8AC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -102,6 +102,7 @@
     <None Include="Assets\ScriptTemplates\55-Mirror__Network Room Player-NewNetworkRoomPlayer.cs.txt" />
     <None Include="Assets\ScriptTemplates\50-Mirror__Network Manager-NewNetworkManager.cs.txt" />
     <None Include="Assets\ScriptTemplates\54-Mirror__Network Room Manager-NewNetworkRoomManager.cs.txt" />
+    <None Include="Assets\Materials\FoWShader.shader" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.14f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
@@ -286,16 +287,16 @@
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.14f1/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
     <Reference Include="Mono.CecilX">
-      <HintPath>C:/Users/flavi/OneDrive/Documents/GitUnity/NecroReseau/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.dll</HintPath>
+      <HintPath>C:/Users/flavi/OneDrive/Documents/GitUnity/NecroLand/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.dll</HintPath>
     </Reference>
     <Reference Include="Mono.CecilX.Mdb">
-      <HintPath>C:/Users/flavi/OneDrive/Documents/GitUnity/NecroReseau/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Mdb.dll</HintPath>
+      <HintPath>C:/Users/flavi/OneDrive/Documents/GitUnity/NecroLand/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Mdb.dll</HintPath>
     </Reference>
     <Reference Include="Mono.CecilX.Pdb">
-      <HintPath>C:/Users/flavi/OneDrive/Documents/GitUnity/NecroReseau/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Pdb.dll</HintPath>
+      <HintPath>C:/Users/flavi/OneDrive/Documents/GitUnity/NecroLand/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Pdb.dll</HintPath>
     </Reference>
     <Reference Include="Mono.CecilX.Rocks">
-      <HintPath>C:/Users/flavi/OneDrive/Documents/GitUnity/NecroReseau/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Rocks.dll</HintPath>
+      <HintPath>C:/Users/flavi/OneDrive/Documents/GitUnity/NecroLand/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Rocks.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.14f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
@@ -643,84 +644,84 @@
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.14f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>C:/Users/flavi/OneDrive/Documents/GitUnity/NecroReseau/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>C:/Users/flavi/OneDrive/Documents/GitUnity/NecroLand/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-      <HintPath>C:/Users/flavi/OneDrive/Documents/GitUnity/NecroReseau/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+      <HintPath>C:/Users/flavi/OneDrive/Documents/GitUnity/NecroLand/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>C:/Users/flavi/OneDrive/Documents/GitUnity/NecroReseau/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>C:/Users/flavi/OneDrive/Documents/GitUnity/NecroLand/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>C:/Users/flavi/OneDrive/Documents/GitUnity/NecroReseau/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>C:/Users/flavi/OneDrive/Documents/GitUnity/NecroLand/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>C:/Users/flavi/OneDrive/Documents/GitUnity/NecroReseau/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>C:/Users/flavi/OneDrive/Documents/GitUnity/NecroLand/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>C:/Users/flavi/OneDrive/Documents/GitUnity/NecroReseau/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>C:/Users/flavi/OneDrive/Documents/GitUnity/NecroLand/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-      <HintPath>C:/Users/flavi/OneDrive/Documents/GitUnity/NecroReseau/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+      <HintPath>C:/Users/flavi/OneDrive/Documents/GitUnity/NecroLand/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/Users/flavi/OneDrive/Documents/GitUnity/NecroReseau/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>C:/Users/flavi/OneDrive/Documents/GitUnity/NecroLand/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>C:/Users/flavi/OneDrive/Documents/GitUnity/NecroReseau/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>C:/Users/flavi/OneDrive/Documents/GitUnity/NecroLand/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Mirror.Weaver.csproj">
-      <Project>{7D07BD76-66C3-813D-3C58-A56C78868468}</Project>
+      <Project>{6FC12247-F902-1C5B-07F6-53676B82A4CA}</Project>
       <Name>Mirror.Weaver</Name>
     </ProjectReference>
     <ProjectReference Include="Mirror.Authenticators.csproj">
-      <Project>{024F62F8-1D2F-DA1A-0765-C6D4E21B1DEE}</Project>
+      <Project>{42B04678-7BA4-3534-F903-844A43B3CBEF}</Project>
       <Name>Mirror.Authenticators</Name>
     </ProjectReference>
     <ProjectReference Include="Mirror.Components.csproj">
-      <Project>{ACCBCF87-C99B-0CE2-D353-2CE81D8CE424}</Project>
+      <Project>{BE0CDA12-8EB9-5A03-9BCA-05F38F8AC729}</Project>
       <Name>Mirror.Components</Name>
     </ProjectReference>
     <ProjectReference Include="Mirror.Examples.csproj">
-      <Project>{9FF5CAF7-3337-8B78-2FE2-13C86849A96C}</Project>
+      <Project>{D141D13D-8A04-B58E-6F68-5E03AEB65A8E}</Project>
       <Name>Mirror.Examples</Name>
     </ProjectReference>
     <ProjectReference Include="Mirror.CompilerSymbols.csproj">
-      <Project>{AE7E7214-A5FD-CF80-5E7B-90DB6C324F2C}</Project>
+      <Project>{630AC4C4-2B52-BA5D-3B05-FAE427DC12E6}</Project>
       <Name>Mirror.CompilerSymbols</Name>
     </ProjectReference>
     <ProjectReference Include="Mirror.Cloud.csproj">
-      <Project>{90A41058-1E2B-08B3-D8DF-2276B02208D6}</Project>
+      <Project>{9A4CAF32-9801-9E80-2C42-7E7BE90118F4}</Project>
       <Name>Mirror.Cloud</Name>
     </ProjectReference>
     <ProjectReference Include="Telepathy.csproj">
-      <Project>{FCF22BEA-65B4-6E72-33F7-ABC87A542075}</Project>
+      <Project>{2E86D3D1-2D42-6668-6159-CCEB2296313F}</Project>
       <Name>Telepathy</Name>
     </ProjectReference>
     <ProjectReference Include="Mirror.Examples.Cloud.Pong.csproj">
-      <Project>{7D44A53D-E6CF-1434-DE4E-31FF4B7CA1BC}</Project>
+      <Project>{935ED579-4C12-EF9A-E334-F70A02ADD390}</Project>
       <Name>Mirror.Examples.Cloud.Pong</Name>
     </ProjectReference>
     <ProjectReference Include="Mirror.csproj">
-      <Project>{CC72F721-A46F-3453-2146-E01C8DA07B86}</Project>
+      <Project>{1A7B17EC-4C7F-37B5-42B6-7C82E6700B47}</Project>
       <Name>Mirror</Name>
     </ProjectReference>
     <ProjectReference Include="Mirror.Editor.csproj">
-      <Project>{FD020D1C-44DD-BF8C-77F2-A9B77C04D9FC}</Project>
+      <Project>{E7834554-21D0-7AFE-FFA0-FB8DE3EDB2FC}</Project>
       <Name>Mirror.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="kcp2k.csproj">
-      <Project>{49766197-403B-0834-7FC8-69E357F7B40F}</Project>
+      <Project>{53238E76-FA75-52FE-E934-207C1AECDB93}</Project>
       <Name>kcp2k</Name>
     </ProjectReference>
     <ProjectReference Include="Mirror.Examples.Cloud.GUI.csproj">
-      <Project>{C687D1BB-37A0-4F46-4824-A6E1917009E3}</Project>
+      <Project>{A4BBAD14-6A98-5BD9-77E4-1BF016A9F95B}</Project>
       <Name>Mirror.Examples.Cloud.GUI</Name>
     </ProjectReference>
     <ProjectReference Include="SimpleWebTransport.csproj">
-      <Project>{DE5C3A37-C3C2-4FB7-361D-9B88F9DEB14B}</Project>
+      <Project>{E838B64D-BE13-9AF6-3E5F-105C87F6844E}</Project>
       <Name>SimpleWebTransport</Name>
     </ProjectReference>
   </ItemGroup>

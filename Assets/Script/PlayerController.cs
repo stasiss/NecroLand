@@ -10,6 +10,7 @@ public class PlayerController : NetworkBehaviour
 {
     [SerializeField] private Transform selectionAreaTransform;
     [SerializeField] private Transform skillCircleTransform;
+    [SerializeField] private Transform returnClicTransform;
     [SyncVar] public bool isAssign;
     public UniteBDD unitBDD;
     public float speed;
@@ -55,6 +56,7 @@ public class PlayerController : NetworkBehaviour
             }
             selectionAreaTransform.gameObject.SetActive(true);
             skillCircleTransform.gameObject.SetActive(true);
+            returnClicTransform.gameObject.SetActive(true);
             GetComponentInChildren<SpriteRenderer>().enabled = true;
             canvasPlayer.enabled = true;
         }
@@ -82,7 +84,10 @@ public class PlayerController : NetworkBehaviour
             if (Input.GetMouseButtonDown(1))
             {
                 if (unitsSelected.Count > 0 && unitsSelected.Any(e => e != null))
+                {
                     MoveUnits();
+                    StartCoroutine(DoReturnOnClic());
+                }
             }
             if (gameObject.CompareTag("Undead"))
             {
@@ -388,7 +393,7 @@ public class PlayerController : NetworkBehaviour
         else if (act == ActionUnite.mouvAttak)
             Cursor.SetCursor(attackTexture, Vector2.zero, cursorMode);
         isSkillTargetEnCours = true;
-        yield return WaitForClic();
+        yield return DoWaitForClic();
         Cursor.SetCursor(defaultTexture, Vector2.zero, cursorMode);
         int j = 0;
         foreach (Unit u in units)
@@ -399,6 +404,7 @@ public class PlayerController : NetworkBehaviour
             j++;
         }
         isSkillTargetEnCours = false;
+        StartCoroutine(DoReturnOnClic());
     }
     /// <summary>
     /// Permet de déclencher le ième skill de l'unité selectionné
@@ -409,23 +415,24 @@ public class PlayerController : NetworkBehaviour
         if (unit.skillsList[persoIdSkill].isCiblable)
         {
             isSkillTargetEnCours = true;
-            if(unit.skillsList[persoIdSkill].sizeAoE > 0)
+            if (unit.skillsList[persoIdSkill].sizeAoE > 0)
             {
                 GestionSkillArea(unit.skillsList[persoIdSkill].sizeAoE);
-                skillCircleTransform.localScale = new Vector3(unit.skillsList[persoIdSkill].sizeAoE, 1 ,unit.skillsList[persoIdSkill].sizeAoE);
+                skillCircleTransform.localScale = new Vector3(unit.skillsList[persoIdSkill].sizeAoE, 1, unit.skillsList[persoIdSkill].sizeAoE);
                 skillCircleTransform.gameObject.SetActive(true);
             }
-            yield return WaitForClic(unit.skillsList[persoIdSkill].sizeAoE);
+            yield return DoWaitForClic(unit.skillsList[persoIdSkill].sizeAoE);
             skillCircleTransform.gameObject.SetActive(false);
+            isSkillTargetEnCours = false;
+            StartCoroutine(DoReturnOnClic());
             unit.TriggerSkill(persoIdSkill, PositionMouse());
         }
         else
             unit.TriggerSkill(persoIdSkill, unit.transform.position);
-        isSkillTargetEnCours = false;
         Cursor.SetCursor(defaultTexture, Vector2.zero, cursorMode);
     }
 
-    IEnumerator WaitForClic(float area = 0)
+    IEnumerator DoWaitForClic(float area = 0)
     {
         while (!Input.GetMouseButtonDown(0) || MouseInUi())
         {
@@ -435,10 +442,20 @@ public class PlayerController : NetworkBehaviour
         }
     }
 
+    IEnumerator DoReturnOnClic()
+    {
+        returnClicTransform.transform.position = PositionMouse();
+        if (!isSkillTargetEnCours)
+        {
+            returnClicTransform.gameObject.SetActive(true);
+            yield return new WaitForSeconds(1f);
+            returnClicTransform.gameObject.SetActive(false);
+        }
+    }
 
     public void GestionSkillArea(float area)
     {
-        skillCircleTransform.transform.position = PositionMouse() - new Vector3(area / 2, 0, area/2);
+        skillCircleTransform.transform.position = PositionMouse() - new Vector3(area / 2, 0, area / 2);
 
     }
     public void MouvCamByMouse()

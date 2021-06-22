@@ -52,7 +52,10 @@ public class GameManager : NetworkBehaviour
         instance = this;
         playersHumans = new List<PlayerController>();
         tickCalculRessource = Time.time + timeCalculRessource;
-
+        foreach (var item in GameObject.FindGameObjectsWithTag("Village"))
+        {
+            villages.Add(item);
+        }
         armeeNecro.Add(GameObject.Find("Necro"));
         armeeNecro.Add(GameObject.Find("Chariot"));
         armeeHuman.Add(castle);
@@ -79,6 +82,7 @@ public class GameManager : NetworkBehaviour
             {
                 u.ModifMoralGlobal();
             }
+            Debug.Log("nb de villages " + villages.Select(e => e.GetComponent<Village>()).Count());
             foreach (Village v in villages.Select(e => e.GetComponent<Village>()))
             {
                 v.ModifVillageMoralGlobal();

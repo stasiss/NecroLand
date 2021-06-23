@@ -124,6 +124,10 @@ public class XpUndeadScript : MonoBehaviour
 
         if (currentUp.IsNewSkill)
             necro.AddSkill(currentUp.IdNewSkill);
+
+        if (currentUp.IdNewAura != 0)
+            necro.ApplyStatus(currentUp.IdNewAura);
+
         if (currentUp.IsPersoAmelio)
         {
             //Pourcentage de up

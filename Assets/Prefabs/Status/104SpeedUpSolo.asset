@@ -20,15 +20,20 @@ MonoBehaviour:
   _timerLife: 0
   _isProc: 0
   _timerProc: 0
-  _isAura: 1
+  _isAura: 0
+  _isSoloAura: 1
+  _isTargetUndead: 0
   _speedProdValue: 0
   _speedMoveValue: 0
-  _diminutionCDAttaque: 0
+  _speedAttaque: 0
   _defContandant: 0
   _defTranchant: 0
   _defMagique: 0
-  _boostDomage: 0
-  _dommage: 0
-  _dommageAround: 0
-  _typeDommage: 0
+  _boostDamage: 0
+  _isLifeSteal: 0
+  _damage: 0
+  _heal: 0
+  _damageAround: 0
+  _typeDamage: 0
+  _moralModificateur: 0
   _isInvisible: 0

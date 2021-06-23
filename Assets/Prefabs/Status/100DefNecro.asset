@@ -13,21 +13,23 @@ MonoBehaviour:
   m_Name: 100DefNecro
   m_EditorClassIdentifier: 
   _id: 100
-  _name: Defense necro
+  _name: Aura Defense necro
   _description: +1def chaqu
   _isNegatif: 0
   _isCanalisation: 0
   _timerLife: 0
-  _isProc: 0
+  _isProc: 1
   _timerProc: 0
   _isAura: 1
+  _idStatusAura: 19
+  _isSoloAura: 0
   _isTargetUndead: 1
   _speedProdValue: 0
   _speedMoveValue: 0
   _speedAttaque: 0
-  _defContandant: 1
-  _defTranchant: 1
-  _defMagique: 1
+  _defContandant: 0
+  _defTranchant: 0
+  _defMagique: 0
   _boostDamage: 0
   _isLifeSteal: 0
   _damage: 0

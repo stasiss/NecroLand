@@ -7,7 +7,7 @@ public class Status
 {
     [Header("Global")]
     public int id;
-    public string nameSkill;
+    public string nameStatus;
     public string description;
     public bool isNegatif;
     public Unit unitAffect;
@@ -17,6 +17,8 @@ public class Status
     public bool isProc;
     public float timeProc, tickProc;
     public bool isAura;
+    public int idStatusAura;
+    public bool isSoloAura;
     public bool isTargetUndead;
     public bool isInvisible;
     public bool isLifeSteal;
@@ -82,7 +84,7 @@ public class Status
         StatusData sd = bdd.Get(statusID);
 
         id = sd.Id;
-        nameSkill = sd.Name;
+        nameStatus = sd.Name;
         description = sd.Description;
         isNegatif = sd.IsNegatif;
         isCanalisation = sd.IsCanalisation;
@@ -98,6 +100,8 @@ public class Status
             tickProc = Time.time;
         }
         isAura = sd.IsAura;
+        isSoloAura = sd.IsSoloAura;
+        idStatusAura = sd.IdStatusAura;
         isTargetUndead = sd.IsTargetUndead;
         speedProdValue = sd.SpeedProdValue;
         speedMoveValue = sd.SpeedMoveValue;

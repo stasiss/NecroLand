@@ -24,6 +24,10 @@ public class StatusData : ScriptableObject
     public float TimerProc { get { return _timerProc; } }
     [SerializeField] private bool _isAura;
     public bool IsAura { get { return _isAura; } }
+    [SerializeField] private int _idStatusAura;
+    public int IdStatusAura { get { return _idStatusAura; } }
+    [SerializeField] private bool _isSoloAura;
+    public bool IsSoloAura { get { return _isSoloAura; } }
     [SerializeField] private bool _isTargetUndead;
     public bool IsTargetUndead { get { return _isTargetUndead; } }
     [SerializeField] private int _speedProdValue;

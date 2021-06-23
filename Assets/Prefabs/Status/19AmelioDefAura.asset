@@ -10,25 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1d49357d8f157004d9f94a1313a77560, type: 3}
-  m_Name: 103Detection
+  m_Name: 19AmelioDefAura
   m_EditorClassIdentifier: 
-  _id: 103
-  _name: Aura Detection
-  _description: detecte
+  _id: 19
+  _name: "Defense Am\xE9lior\xE9 by Aura"
+  _description: Augmente les armures
   _isNegatif: 0
   _isCanalisation: 0
-  _timerLife: 0
+  _timerLife: 1
   _isProc: 0
   _timerProc: 0
-  _isAura: 1
+  _isAura: 0
   _isSoloAura: 0
-  _isTargetUndead: 1
+  _isTargetUndead: 0
   _speedProdValue: 0
   _speedMoveValue: 0
   _speedAttaque: 0
-  _defContandant: 0
-  _defTranchant: 0
-  _defMagique: 0
+  _defContandant: 1
+  _defTranchant: 1
+  _defMagique: 1
   _boostDamage: 0
   _isLifeSteal: 0
   _damage: 0

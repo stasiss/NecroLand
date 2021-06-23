@@ -21,6 +21,8 @@ MonoBehaviour:
   _isProc: 1
   _timerProc: 1
   _isAura: 1
+  _idStatusAura: 0
+  _isSoloAura: 0
   _isTargetUndead: 0
   _speedProdValue: 0
   _speedMoveValue: 0
@@ -33,6 +35,6 @@ MonoBehaviour:
   _damage: 1
   _heal: 0
   _damageAround: 0
-  _typeDamage: 0
+  _typeDamage: 2
   _moralModificateur: 0
   _isInvisible: 0

@@ -22,7 +22,7 @@ MonoBehaviour:
   _isPersoAmelio: 0
   _isNewSkill: 0
   _idNewSkill: 0
-  _idNewAura: 106
+  _idNewAura: 100
   _upSpeedAttaque: 0
   _upRange: 0
   _upVision: 0
@@ -32,8 +32,8 @@ MonoBehaviour:
   _upPvUnit: 0
   _upPvUnitPurcent: 0
   _upSpeedUnit: 0
-  _upDomageUnit: 0
-  _upDomageUnitPurcent: 0
+  _upDamageUnit: 0
+  _upDamageUnitPurcent: 0
   _idUnitBuff: 0
   _idMultiUnitBuff: 
   _idSkillBuff: 0

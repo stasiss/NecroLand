@@ -21,6 +21,8 @@ MonoBehaviour:
   _isProc: 0
   _timerProc: 0
   _isAura: 1
+  _idStatusAura: 20
+  _isSoloAura: 0
   _isTargetUndead: 1
   _speedProdValue: 0
   _speedMoveValue: 0

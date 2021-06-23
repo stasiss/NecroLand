@@ -32,6 +32,7 @@ public class Unit : NetworkBehaviour
     public SyncList<Skills> skillsList = new SyncList<Skills>();
     public SyncList<Status> statusList = new SyncList<Status>();
     private float tickAttaque;
+    private float tickVerifStatus;
     [HideInInspector] public int idCorpse;
     public GameObject corpse;
     [HideInInspector] public int probaDropCorpse;
@@ -76,6 +77,7 @@ public class Unit : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        sizeZoneOfAura = 8;
         cdAttaqueBase = cdAttaque;
         speedBase = speed;
         isUndead = CompareTag("Undead");
@@ -265,10 +267,32 @@ public class Unit : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (statusList.Count > 0)
+        if (statusList.Count > 0 && Time.time > tickVerifStatus)
         {
+            tickVerifStatus = Time.time + 1;
             for (int i = statusList.Count - 1; i >= 0; i--)
             {
+                if (statusList[i].isAura)
+                {
+                    Collider[] hitColliders = Physics.OverlapSphere(transform.position, sizeZoneOfAura);
+
+                    foreach (Unit u in hitColliders.Where(e => e.GetComponentInParent<Unit>()).Select(e => e.GetComponentInParent<Unit>()))
+                    {
+                        if (statusList[i].idStatusAura != 0)
+                            u.ApplyStatus(statusList[i].idStatusAura);
+                        if (statusList[i].damage != 0)
+                        {
+                            if (statusList[i].isLifeSteal)
+                                u.LifeSteal(statusList[i].damage, statusList[i].typeDamage, this);
+                            else
+                                u.TakeDamage(statusList[i].damage, statusList[i].typeDamage);
+                        }
+                        if (statusList[i].moralModificateur != 0)
+                        {
+                            u.MoralChanger(statusList[i].moralModificateur);
+                        }
+                    }
+                }
                 statusList[i].VerifStatus();
             }
         }
@@ -524,7 +548,7 @@ public class Unit : NetworkBehaviour
     {
         if (!isServer)
             return;
-        GameObject go = Instantiate(projectile, transform.position + 2 *Vector3.up, Quaternion.identity);
+        GameObject go = Instantiate(projectile, transform.position + 2 * Vector3.up, Quaternion.identity);
         go.GetComponent<Projectiles>().target = target;
         NetworkServer.Spawn(go);
     }

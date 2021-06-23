@@ -508,6 +508,8 @@ public class GameManager : NetworkBehaviour
         newUnit.damage = (int)(newUnit.maxHealth * (100f + UpDamageUnitPurcent) / 100f);
         newUnit.damage += UpDamageUnit;
         newUnit.speed += UpSpeedUnit;
+        if (newUnit.speed != 0)
+            newUnit.agent.speed = newUnit.speed;
     }
     public void AddUpPvUnitPurcent(int bonus)
     {

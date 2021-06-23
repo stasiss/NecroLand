@@ -15,14 +15,13 @@ public class Unit : NetworkBehaviour
     [HideInInspector] public int maxHealth;
     [HideInInspector] public bool isAlive = true;
     public Image healthBarre;
-    [SyncVar(hook = nameof(HealthChanged))]
-    [HideInInspector] public int currentHealth;
+    [SyncVar(hook = nameof(HealthChanged))] [HideInInspector] public int currentHealth;
     [SyncVar] [HideInInspector] public StatMoral currentEtat;
-    [SyncVar] public int currentMoral, middleMoral, maxMoral;
+    [SyncVar] [HideInInspector] public int currentMoral, middleMoral, maxMoral;
     [HideInInspector] [SyncVar] public int moralSeuilFuite, moralSeuilBas, moralSeuilHaut;
     [HideInInspector] [SyncVar] public int damage;
     [HideInInspector] public TypeOfDamage typeOfDamage;
-    [SyncVar] public int defCont, defTran, defMagi;
+    [SyncVar] [HideInInspector] public int defCont, defTran, defMagi;
     [HideInInspector] [SyncVar] public float speed, speedBase;
     [HideInInspector] [SyncVar] public float range;
     [HideInInspector] [SyncVar] public float fieldOfView;
@@ -67,7 +66,6 @@ public class Unit : NetworkBehaviour
     private ActionUnite currentAction;
 
     private GameObject target;
-    [SyncVar] public Vector3 targetMove;
     [SyncVar] public Vector3 targetFinishMove;
 
     private void Awake()
@@ -91,19 +89,21 @@ public class Unit : NetworkBehaviour
     }
     public void GoStartVillage()
     {
-        currentAction = ActionUnite.idle;
+        currentAction = ActionUnite.mouv;
         if (isServer)
         {
             if (isReturn)
             {
                 isReturn = false;
                 agent.destination = VectorZeroY(targetVillage.transform.position);
+                targetFinishMove = VectorZeroY(targetVillage.transform.position);
                 RotationToUnit();
             }
             else
             {
                 isReturn = true;
                 agent.destination = VectorZeroY(GameObject.Find("Castle").transform.position);
+                targetFinishMove = VectorZeroY(GameObject.Find("Castle").transform.position);
                 RotationToUnit();
             }
         }
@@ -113,6 +113,7 @@ public class Unit : NetworkBehaviour
     [Command]
     public void CmdGoStartVillage()
     {
+        Debug.Log("Ligne de commande");
         GoStartVillage();
     }
 
@@ -155,6 +156,8 @@ public class Unit : NetworkBehaviour
     public void SuppressionStatus(Status status)
     {
         speed = speedBase;
+        if (speed != 0)
+            agent.speed = speed;
         cdAttaque = cdAttaqueBase;
         Debug.Log(defCont);
         defCont -= status.defCont;
@@ -188,6 +191,8 @@ public class Unit : NetworkBehaviour
                 {
                     speedBase = speed;
                     speed *= (100f + s.speedMoveValue) / 100f;
+                    if(speed != 0)
+                        agent.speed = speed;
                     cdAttaqueBase = cdAttaque;
                     cdAttaque *= (100f + s.speedAttaque) / 100f;
                     defCont += s.defCont;
@@ -244,7 +249,7 @@ public class Unit : NetworkBehaviour
     internal void MoralChanger(int moralChanger)
     {
         currentMoral = Mathf.Clamp(currentMoral + moralChanger, 0, maxMoral);
-        if (currentEtat == StatMoral.fleeing && Vector3.Distance(transform.position, targetMove) > 5)
+        if (currentEtat == StatMoral.fleeing && Vector3.Distance(transform.position, agent.destination) > 5)
             return;
         if (currentMoral < moralSeuilFuite)
         {
@@ -296,10 +301,13 @@ public class Unit : NetworkBehaviour
                 statusList[i].VerifStatus();
             }
         }
+
+        if (speed == 0)
+            return;
         if (currentAction != ActionUnite.mouv)
             target = FindTheCloseEnemy(false);
         GetComponentInChildren<Rigidbody>().velocity = Vector3.zero;
-        if (targetMove == Vector3.zero && currentAction == ActionUnite.mouv)
+        if (Vector3.Distance(agent.destination, transform.position) <= 1 && currentAction == ActionUnite.mouv)
         {
             if (Vector3.Distance(transform.position, targetFinishMove) < 1)
                 currentAction = ActionUnite.idle;
@@ -307,7 +315,7 @@ public class Unit : NetworkBehaviour
                 ChangeAction(ActionUnite.mouvAttak, targetFinishMove);
         }
 
-        if (targetMove != Vector3.zero)
+        if (Vector3.Distance(agent.destination, transform.position) > 1)
         {
             Move();
         }
@@ -316,7 +324,7 @@ public class Unit : NetworkBehaviour
             LaunchAttaque();
             if ((target.transform.position - transform.position).magnitude <= range)
                 StopToHitDistance();
-            if (targetMove == Vector3.zero && (target.transform.position - transform.position).magnitude > range)
+            if (Vector3.Distance(agent.destination, transform.position) <= 1 && Vector3.Distance(target.transform.position, transform.position) > range)
                 Aggro();
         }
         if (isRecolteur)
@@ -368,7 +376,7 @@ public class Unit : NetworkBehaviour
     }
     public void StopToHitDistance()
     {
-        targetMove = Vector3.zero;
+        agent.destination = transform.position;
     }
     private void Aggro()
     {
@@ -452,11 +460,13 @@ public class Unit : NetworkBehaviour
     [Command]
     public void CmdHeal(int heal)
     {
+        Debug.Log("Ligne de commande");
         Heal(heal);
     }
     [Command]
     public void CmdTakeDamage(int damage)
     {
+        Debug.Log("Ligne de commande");
         TakeDamage(damage, typeOfDamage);
     }
     void HealthChanged(int oldValue, int newValue)
@@ -554,17 +564,16 @@ public class Unit : NetworkBehaviour
     }
     public void Move()
     {
-        if ((targetMove - transform.position).magnitude > 1)
+        if (Vector3.Distance(agent.destination, transform.position) > 0.1f)
         {
             isMoving = true;
-            Vector3 deplacement = (targetMove - transform.position).normalized;
-            transform.Translate(VectorZeroY(deplacement) * speed * Time.fixedDeltaTime);
+            //Vector3 deplacement = (targetMove - transform.position).normalized;
+            //transform.Translate(VectorZeroY(deplacement) * speed * Time.fixedDeltaTime);
         }
         else
         {
             isMoving = false;
             currentAction = ActionUnite.idle;
-            targetMove = Vector3.zero;
 
             //pour les charrettes
             if (isTransport)
@@ -608,7 +617,7 @@ public class Unit : NetworkBehaviour
             targets = GameObject.FindGameObjectsWithTag("Bones").Where(e => (e.transform.position - transform.position).magnitude < rangeToAggro).ToList();
         else
             targets = isUndead ? GameObject.FindGameObjectsWithTag("Humans").Where(e => (e.transform.position - transform.position).magnitude < rangeToAggro).ToList() :
-                                                  GameObject.FindGameObjectsWithTag("Undead").Where(e => (e.transform.position - transform.position).magnitude < rangeToAggro).ToList();
+                                 GameObject.FindGameObjectsWithTag("Undead").Where(e => (e.transform.position - transform.position).magnitude < rangeToAggro).ToList();
 
         if (targets.Count != 0)
         {
@@ -629,7 +638,6 @@ public class Unit : NetworkBehaviour
         Skills s = new Skills();
         s.UseBDD(idSkill);
         skillsList.Add(s);
-        //RpcAddSkill(s);
     }
     [ClientRpc]
     public void RpcAddSkill(Skills s)
@@ -665,6 +673,8 @@ public class Unit : NetworkBehaviour
         defTran = ud.DefTranchant;
         defMagi = ud.DefMagique;
         speed = ud.Speed;
+        if (agent != null)
+            agent.speed = ud.Speed;
         range = ud.Range;
         fieldOfView = ud.FieldOfView;
         transform.Find("FoV").transform.localScale = new Vector3(fieldOfView, 0, fieldOfView);
@@ -675,9 +685,6 @@ public class Unit : NetworkBehaviour
             for (int i = 0; i < ud.SkillsList.Count; i++)
             {
                 AddSkill(ud.SkillsList[i].Id);
-                //Skills s = new Skills();
-                //s.UseBDD(ud.SkillsList[i].Id);
-                //skillsList.Add(s);
             }
         }
         if (ud.Projectile != null)

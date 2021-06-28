@@ -493,7 +493,7 @@ ScriptsOnlyBuild:
     className: TMP_SubMeshUI
   - hash:
       serializedVersion: 2
-      Hash: f744dd2ce014f8eb98cb2f89451fa2c2
+      Hash: 7b70fec6413ec200897f88337f362d9e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Unit
@@ -1075,7 +1075,7 @@ ScriptsOnlyBuild:
     className: NetworkLobbyManager
   - hash:
       serializedVersion: 2
-      Hash: 195a1385215363ffd79332f20985049f
+      Hash: 9590f5514fcf178e0c613d5cb2ae031c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: StatusData
@@ -1292,4 +1292,4 @@ ScriptsOnlyBuild:
   platform: 5
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: C:/Users/flavi/OneDrive/Bureau/necroBuild/NecroReseau.exe
+  playerPath: D:/NecroReseau.exe

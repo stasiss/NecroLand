@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SkillBDD
   m_EditorClassIdentifier: 
   dataAsArray:
-  - {fileID: 11400000, guid: 6b636b699795cb1409439f4c376e639b, type: 2}
+  - {fileID: 11400000, guid: 6d751fd605f57904b9836e5bcf2375db, type: 2}
   - {fileID: 11400000, guid: d8567cfd446bc4a449610cf1642b4c0e, type: 2}
   - {fileID: 11400000, guid: 9f5b1ee57d87089469b963bcc7380ba3, type: 2}
   - {fileID: 11400000, guid: 9dd490d34fecbc4449cd80e4c57a9161, type: 2}
@@ -39,7 +39,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e2dc3a8ba8c8acb41b188bc2dcc57f18, type: 2}
   - {fileID: 11400000, guid: 0a6ced2f16d36d641afaea21b1589b1f, type: 2}
   - {fileID: 11400000, guid: ea1ecec60da7d2a449d9962e9722f0bd, type: 2}
-  - {fileID: 11400000, guid: c3bb34f74f11ae940bd11d02d970ebcc, type: 2}
+  - {fileID: 11400000, guid: 88898d3929eff4147a47929670770f15, type: 2}
   - {fileID: 11400000, guid: bb344e4e2c106a54e99ecb700e8a8396, type: 2}
   - {fileID: 11400000, guid: 8364262e0e7e93a488c891f45f403dd7, type: 2}
   - {fileID: 11400000, guid: d3c77535e2249eb47a640fb85deb0ec0, type: 2}

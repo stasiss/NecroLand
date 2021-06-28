@@ -109,7 +109,7 @@ public class PlayerController : NetworkBehaviour
         {
             tickIncantation = 0;
         }
-        if (unitsSelected.Count > 0)
+        if (unitsSelected.Count > 0 && unitsSelected.Any(u => u.isAlive))
             uiPlayer.DisplayStats(unitsSelected[0].Stats());
     }
     public void GestionSkillKeyBoard()

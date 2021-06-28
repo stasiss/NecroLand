@@ -11,6 +11,7 @@ public class Unit : NetworkBehaviour
 {
     public int id;
     public NavMeshAgent agent;
+    public Animator animator;
     [HideInInspector] public bool isUndead;
     [HideInInspector] public int maxHealth;
     [HideInInspector] public bool isAlive = true;
@@ -75,6 +76,7 @@ public class Unit : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponentInChildren<Animator>();
         sizeZoneOfAura = 8;
         cdAttaqueBase = cdAttaque;
         speedBase = speed;
@@ -89,7 +91,7 @@ public class Unit : NetworkBehaviour
     }
     public void GoStartVillage()
     {
-        currentAction = ActionUnite.mouv;
+        SetCurrentAction(ActionUnite.mouv);
         if (isServer)
         {
             if (isReturn)
@@ -191,7 +193,7 @@ public class Unit : NetworkBehaviour
                 {
                     speedBase = speed;
                     speed *= (100f + s.speedMoveValue) / 100f;
-                    if(speed != 0)
+                    if (speed != 0)
                         agent.speed = speed;
                     cdAttaqueBase = cdAttaque;
                     cdAttaque *= (100f + s.speedAttaque) / 100f;
@@ -212,20 +214,25 @@ public class Unit : NetworkBehaviour
     {
         ChangeAction(act, targetMouv);
     }
+    /// <summary>
+    /// DOnne un ordre à une unité
+    /// </summary>
+    /// <param name="act"> ordre de mouvement ou de travail ou de pause</param>
+    /// <param name="targetMouv"> pointeur de la souris</param>
     public void ChangeAction(ActionUnite act, Vector3 targetMouv)
     {
         if (isServer)
         {
             if (act == ActionUnite.work)
             {
-                currentAction = ActionUnite.mouv;
+                SetCurrentAction(ActionUnite.mouv);
                 if (isCharged)
                     TargetMove(village.transform.position);
                 else
                     TargetMove(ressZone.transform.position);
                 return;
             }
-            currentAction = act;
+            SetCurrentAction(act);
             TargetMove(VectorZeroY(targetMouv));
             targetFinishMove = VectorZeroY(targetMouv);
             if (act == ActionUnite.mouv)
@@ -234,6 +241,10 @@ public class Unit : NetworkBehaviour
         else
             CmdChangeAction(act, targetMouv);
     }
+    /// <summary>
+    /// nouvelle destination de l'unité, en move ou moveattack
+    /// </summary>
+    /// <param name="newMove"></param>
     public void TargetMove(Vector3 newMove)
     {
         if (isTransport || (CompareTag("Humans") && currentEtat == StatMoral.fleeing))
@@ -245,7 +256,10 @@ public class Unit : NetworkBehaviour
             RotationToUnit();
         }
     }
-
+    /// <summary>
+    /// changement du moral, gestion des différents etat de moral de l'unité
+    /// </summary>
+    /// <param name="moralChanger"></param>
     internal void MoralChanger(int moralChanger)
     {
         currentMoral = Mathf.Clamp(currentMoral + moralChanger, 0, maxMoral);
@@ -263,7 +277,31 @@ public class Unit : NetworkBehaviour
         else
             currentEtat = StatMoral.normal;
     }
-
+    /// <summary>
+    /// Change l'ordre de l'unité et donne la bonne animation si animator il y a
+    /// </summary>
+    public void SetCurrentAction(ActionUnite act)
+    {
+        currentAction = act;
+        if (animator != null) // permet de jouer la bonne animation de l'unité
+            switch (act)
+            {
+                case ActionUnite.idle:
+                    animator.SetBool("isMove", false);
+                    animator.SetBool("isAttack", false);
+                    break;
+                case ActionUnite.mouv:
+                case ActionUnite.mouvAttak:
+                case ActionUnite.work:
+                    animator.SetBool("isMove", true);
+                    break;
+                case ActionUnite.attack:
+                    animator.SetBool("IsAttack", true);
+                    break;
+                default:
+                    break;
+            }
+    }
     [Command]
     public void CmdSetTargetMove(Vector3 newMove)
     {
@@ -272,7 +310,7 @@ public class Unit : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (statusList.Count > 0 && Time.time > tickVerifStatus)
+        if (statusList.Count > 0 && Time.time > tickVerifStatus) /// verification des statut et aura, une fois par seconde
         {
             tickVerifStatus = Time.time + 1;
             for (int i = statusList.Count - 1; i >= 0; i--)
@@ -310,9 +348,13 @@ public class Unit : NetworkBehaviour
         if (Vector3.Distance(agent.destination, transform.position) <= 1 && currentAction == ActionUnite.mouv)
         {
             if (Vector3.Distance(transform.position, targetFinishMove) < 1)
-                currentAction = ActionUnite.idle;
+            {
+                SetCurrentAction(ActionUnite.idle);
+            }
             else
+            {
                 ChangeAction(ActionUnite.mouvAttak, targetFinishMove);
+            }
         }
 
         if (Vector3.Distance(agent.destination, transform.position) > 1)
@@ -474,6 +516,7 @@ public class Unit : NetworkBehaviour
         if (newValue <= 0 && isAlive)
         {
             isAlive = false;
+            if (animator != null) animator.SetBool("IsDeath", true);
             if (!isServer)
                 return;
             if (isUndead)
@@ -488,7 +531,7 @@ public class Unit : NetworkBehaviour
                 go.GetComponent<Bones>().bone = corpseBone;
                 GameManager.instance.SpawnGameObject(go);
             }
-            GameManager.instance.ServerDestroy(gameObject);
+            GameManager.instance.ServerDestroy(gameObject, 1f);
         }
         else if (healthBarre != null)
             healthBarre.fillAmount = (float)currentHealth / (float)maxHealth;
@@ -573,7 +616,7 @@ public class Unit : NetworkBehaviour
         else
         {
             isMoving = false;
-            currentAction = ActionUnite.idle;
+            SetCurrentAction(ActionUnite.idle);
 
             //pour les charrettes
             if (isTransport)

@@ -268,8 +268,12 @@ public class GameManager : NetworkBehaviour
             }
         }
     }
-
-    public void ServerDestroy(GameObject go)
+    /// <summary>
+    /// Detruire un objet sur le serveur (et gerer l'xp si necessaire)
+    /// </summary>
+    /// <param name="go">objet</param>
+    /// <param name="timeToDeath">temps avant la destruction</param>
+    public void ServerDestroy(GameObject go, float timeToDeath = 0)
     {
         if (isServer)
         {
@@ -280,12 +284,21 @@ public class GameManager : NetworkBehaviour
                 else
                     RpcGainXp(XpOnVoie.Martial, 1, 3);
             }
-            NetworkServer.Destroy(go);
+            if (timeToDeath != 0)
+                StartCoroutine(DoServerDestroy(go, timeToDeath));
+            else
+                NetworkServer.Destroy(go);
         }
         else
             CmdServerDestroy(go);
     }
 
+    [Server]
+    internal IEnumerator DoServerDestroy(GameObject go, float timeToDeath)
+    {
+        yield return new WaitForSeconds(1f);
+        NetworkServer.Destroy(go);
+    }
     [Command]
     public void CmdServerDestroy(GameObject go)
     {

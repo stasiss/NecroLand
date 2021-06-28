@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d49357d8f157004d9f94a1313a77560, type: 3}
+  m_Name: 10guerilla
+  m_EditorClassIdentifier: 
+  _id: 10
+  _name: Guerilla
+  _description: "Les unit\xE9s sont invisbles jusqu'\xE0 leurs prochaines actions
+    (mouvement, attaque) ou prise de d\xE9gats"
+  _isCanalisation: 0
+  _timerLife: 0
+  _isProc: 0
+  _timerProc: 0
+  _isAura: 0
+  _speedProdValue: 0
+  _speedMoveValue: 0
+  _accelerationAttaque: 0
+  _defContandant: 0
+  _defTranchant: 0
+  _defMagique: 0
+  _boostDomage: 0
+  _dommage: 0
+  _typeDommage: 0
+  _isInvisible: 1

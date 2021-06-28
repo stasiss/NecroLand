@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a27623e6add70214c8ec2b6a0b2e4cd8, type: 3}
+  m_Name: Soldat
+  m_EditorClassIdentifier: 
+  _id: 1
+  _name: Soldat
+  _description: Creer un soldat de base
+  _typeSkill: 1
+  _manaCost: 0
+  _timeCast: 3
+  _cdTime: 0
+  _unit: {fileID: 11400000, guid: 9f92ab742988abd44a967f1d2278f961, type: 2}
+  _isUndead: 0
+  _costBone: 0
+  _costFlesh: 0
+  _costIron: 2
+  _costWood: 1
+  _costFood: 3

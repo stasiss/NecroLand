@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0c53611110659d4a9f1106f66b170dd, type: 3}
+  m_Name: Mario6
+  m_EditorClassIdentifier: 
+  _id: 6
+  _name: "Marche de non vie am\xE9lior\xE9"
+  _description: caca prout
+  _voie: 0
+  _isUndead: 1
+  _upManaMax: 0
+  _upManaRegen: 0
+  _isPersoAmelio: 0
+  _isNewSkill: 0
+  _idNewSkill: 0
+  _idNewAura: 0
+  _upSpeedAttaque: 0
+  _upRange: 0
+  _upVision: 0
+  _defContandant: 0
+  _defTranchant: 0
+  _defMagique: 0
+  _upPvUnit: 0
+  _upPvUnitPurcent: 0
+  _upSpeedUnit: 0
+  _upDomageUnit: 0
+  _upDomageUnitPurcent: 0
+  _idUnitBuff: 0
+  _idMultiUnitBuff: 03000000
+  _idSkillBuff: 0

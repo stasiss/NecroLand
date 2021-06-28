@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a27623e6add70214c8ec2b6a0b2e4cd8, type: 3}
+  m_Name: Skelette
+  m_EditorClassIdentifier: 
+  _id: 3
+  _name: Squelette
+  _description: "Cr\xE9\xE9 un squelette faible"
+  _typeSkill: 0
+  _manaCost: 1
+  _timeCast: 3
+  _cdTime: 0
+  _unit: {fileID: 11400000, guid: 6fb71a7568a73ca4f97c94ac273cd15b, type: 2}
+  _isUndead: 1
+  _costBone: 1
+  _costFlesh: 0
+  _costIron: 0
+  _costWood: 0
+  _costFood: 0

@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ac9746cd88c4ed4386b39a61c7d12ff, type: 3}
+  m_Name: soldat1
+  m_EditorClassIdentifier: 
+  _id: 1
+  _name: soldat
+  _prefab: {fileID: 5161047186787797196, guid: dc5d709e6b2c9e04692a99b7ecfcc14a, type: 3}
+  _isUndead: 0
+  _idCorpse: 0
+  _probaCorpse: 100
+  _bone: 1
+  _flesh: 1
+  _maxHealth: 30
+  _typeDamage: 1
+  _damage: 5
+  _defContandant: 1
+  _defTranchant: 1
+  _defMagique: 0
+  _speed: 2
+  _range: 2
+  _cdAttack: 1
+  _fieldOfView: 12
+  _manaReserve: 0
+  _foodComsomption: 0.2
+  _skillsList: []
+  _isInvisible: 0
+  _isDetecteur: 0
+  _middleMoral: 60
+  _maxMoral: 100
+  _seuilFuiteMoral: 10
+  _seuilBasMoral: 30
+  _seuilHautMoral: 85
+  _isTransport: 0
+  _maxStock: 0
+  _isRecolteur: 0
+  _isCorpseRecolteur: 0
+  _isTrap: 0
+  _timerLife: 0

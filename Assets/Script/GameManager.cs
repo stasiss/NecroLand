@@ -297,10 +297,7 @@ public class GameManager : NetworkBehaviour
         else
             CmdServerDestroy(go);
     }
-    public void BuffOldUnitUD(int idUnit)
-    {
-        
-    }
+
     [Server]
     internal IEnumerator DoServerDestroy(GameObject go, float timeToDeath)
     {

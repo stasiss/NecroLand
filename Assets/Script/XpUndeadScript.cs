@@ -185,18 +185,6 @@ public class XpUndeadScript : MonoBehaviour
             GameManager.instance.SetManaMax(currentUp.UpManaMax);
             GameManager.instance.UpManaRegenUp(currentUp.UpManaRegen);
         }
-        if(currentUp.IdUnitBuff != 0)
-        {
-            switch(currentUp.IdUnitBuff)
-            {
-                case 15:
-                    GameManager.instance.statZombi = 80;
-                    break;
-                default:
-                    break;
-            }
-            GameManager.instance.BuffOldUnitUD(currentUp.IdUnitBuff);
-        }
     }
     public void DescriptionSkillWay1(int id)
     {

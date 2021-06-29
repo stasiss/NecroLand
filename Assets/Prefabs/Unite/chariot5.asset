@@ -16,10 +16,12 @@ MonoBehaviour:
   _name: Chariot d'os
   _prefab: {fileID: 5919626563726247898, guid: 94cafdbcacbca2446b337e0eab9faac8, type: 3}
   _isUndead: 1
+  _isZombi: 0
   _idCorpse: 0
   _probaCorpse: 75
   _bone: 20
   _flesh: 6
+  _projectile: {fileID: 0}
   _maxHealth: 70
   _typeDamage: 0
   _damage: 0
@@ -37,6 +39,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e892a7204beecb94a93414652395f18c, type: 2}
   - {fileID: 11400000, guid: 49df410f967abc545aeac902abc19f77, type: 2}
   - {fileID: 11400000, guid: d3c77535e2249eb47a640fb85deb0ec0, type: 2}
+  - {fileID: 11400000, guid: 775e04d851b7e7645ad9e09de65ffd62, type: 2}
   _isInvisible: 0
   _isDetecteur: 0
   _middleMoral: 0

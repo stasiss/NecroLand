@@ -91,8 +91,6 @@ public class PlayerController : NetworkBehaviour
             }
             if (gameObject.CompareTag("Undead"))
             {
-                //if (Input.GetKeyDown(KeyCode.A))
-                //    ReleverLesCadavres();
                 if (Input.GetKeyDown(KeyCode.T))
                 {
                     TourneAPopInAcolyte();
@@ -444,7 +442,8 @@ public class PlayerController : NetworkBehaviour
 
     IEnumerator DoReturnOnClic()
     {
-        returnClicTransform.transform.position = PositionMouse();
+        Vector3 clic = PositionMouse();
+        returnClicTransform.transform.position = clic;
         if (!isSkillTargetEnCours)
         {
             returnClicTransform.gameObject.SetActive(true);
@@ -588,6 +587,6 @@ public class PlayerController : NetworkBehaviour
         float deltaZ = Input.GetAxisRaw("Vertical");
         Vector3 deplacementCam = new Vector3(deltaX, 0, deltaZ).normalized;
         transform.Translate(deplacementCam * speed * Time.fixedDeltaTime, 0);
-
+        returnClicTransform.transform.Translate(-deplacementCam * speed * Time.fixedDeltaTime, 0);
     }
 }

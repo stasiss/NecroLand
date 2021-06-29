@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a27623e6add70214c8ec2b6a0b2e4cd8, type: 3}
-  m_Name: CadavreCanin
+  m_Name: pecheresse
   m_EditorClassIdentifier: 
-  _id: 14
-  _name: Cadavre canin
-  _description: "Cr\xE9\xE9 un chien d'attaque rapide"
+  _id: 16
+  _name: Pecheresse
+  _description: "Cr\xE9\xE9 une meuf qui vomi"
   _typeSkill: 0
   _manaCost: 1
   _timeCast: 3
@@ -34,10 +34,10 @@ MonoBehaviour:
   _heal: 0
   _moralChanger: 0
   _probaProc: 0
-  _unit: {fileID: 11400000, guid: 7aae569706eaa874f856eee8d5e4353a, type: 2}
+  _unit: {fileID: 11400000, guid: 687e39bb604f33d4f8d8d5f2c484f845, type: 2}
   _isUndead: 1
   _costBone: 1
-  _costFlesh: 1
+  _costFlesh: 2
   _costIron: 0
   _costWood: 0
   _costFood: 0

@@ -180,9 +180,7 @@ public class XpHumansScript : MonoBehaviour
             persoHero.maxHealth += currentUp.UpPvUnit;
             persoHero.currentHealth += currentUp.UpPvUnit;
             persoHero.damage += currentUp.UpDamageUnit;
-            persoHero.speed += currentUp.UpSpeedUnit;
-            if (persoHero.speed != 0)
-                persoHero.agent.speed = persoHero.speed;
+            persoHero.SetSpeed(persoHero.GetSpeed() + currentUp.UpSpeedUnit);
         }
 
         if (currentUp.UpManaMax != 0 || currentUp.UpManaRegen != 0)

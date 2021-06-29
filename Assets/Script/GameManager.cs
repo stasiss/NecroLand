@@ -27,8 +27,12 @@ public class GameManager : NetworkBehaviour
     [SyncVar(hook = nameof(ChangeUINecro))]
     public float manaRegen = 1f;
     public float manaRegenUp;
+
+
+    [Header("Necro Up")]
     [HideInInspector] public int UpPvUnit, UpPvUnitPurcent, UpDamageUnit, UpDamageUnitPurcent;
     [HideInInspector] public float UpSpeedUnit;
+    [HideInInspector] public int statZombi;
 
     [Header("Human")]
     [SyncVar] public List<GameObject> armeeHuman;
@@ -56,6 +60,7 @@ public class GameManager : NetworkBehaviour
         {
             villages.Add(item);
         }
+        statZombi = 60;
         armeeNecro.Add(GameObject.Find("Necro"));
         armeeNecro.Add(GameObject.Find("Chariot"));
         armeeHuman.Add(castle);
@@ -520,9 +525,7 @@ public class GameManager : NetworkBehaviour
 
         newUnit.damage = (int)(newUnit.maxHealth * (100f + UpDamageUnitPurcent) / 100f);
         newUnit.damage += UpDamageUnit;
-        newUnit.speed += UpSpeedUnit;
-        if (newUnit.speed != 0)
-            newUnit.agent.speed = newUnit.speed;
+        newUnit.SetSpeed(newUnit.GetSpeed() + UpSpeedUnit);
     }
     public void AddUpPvUnitPurcent(int bonus)
     {

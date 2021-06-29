@@ -23,7 +23,7 @@ public class Unit : NetworkBehaviour
     [HideInInspector] [SyncVar] public int damage;
     [HideInInspector] public TypeOfDamage typeOfDamage;
     [SyncVar] [HideInInspector] public int defCont, defTran, defMagi;
-    [HideInInspector] [SyncVar] public float speed, speedBase;
+    [HideInInspector] [SyncVar] private float speed, speedBase;
     [HideInInspector] [SyncVar] public float range;
     [HideInInspector] [SyncVar] public float fieldOfView;
     [HideInInspector] [SyncVar] public float sizeZoneOfAura;
@@ -157,9 +157,7 @@ public class Unit : NetworkBehaviour
     }
     public void SuppressionStatus(Status status)
     {
-        speed = speedBase;
-        if (speed != 0)
-            agent.speed = speed;
+        SetSpeed(speedBase);
         cdAttaque = cdAttaqueBase;
         Debug.Log(defCont);
         defCont -= status.defCont;
@@ -192,9 +190,7 @@ public class Unit : NetworkBehaviour
                 if (!s.isProc)
                 {
                     speedBase = speed;
-                    speed *= (100f + s.speedMoveValue) / 100f;
-                    if (speed != 0)
-                        agent.speed = speed;
+                    SetSpeed(speed * (100f + s.speedMoveValue) / 100f);
                     cdAttaqueBase = cdAttaque;
                     cdAttaque *= (100f + s.speedAttaque) / 100f;
                     defCont += s.defCont;
@@ -618,8 +614,6 @@ public class Unit : NetworkBehaviour
         if (Vector3.Distance(agent.destination, transform.position) > 0.1f)
         {
             isMoving = true;
-            //Vector3 deplacement = (targetMove - transform.position).normalized;
-            //transform.Translate(VectorZeroY(deplacement) * speed * Time.fixedDeltaTime);
         }
         else
         {
@@ -717,8 +711,6 @@ public class Unit : NetworkBehaviour
             moralSeuilBas = ud.SeuilBasMoral;
             moralSeuilHaut = ud.SeuilHautMoral;
         }
-        if (agent != null)
-            agent.speed = ud.Speed;
         range = ud.Range;
         fieldOfView = ud.FieldOfView;
         transform.Find("FoV").transform.localScale = new Vector3(fieldOfView, 0, fieldOfView);
@@ -765,7 +757,18 @@ public class Unit : NetworkBehaviour
         defCont = ud.DefContandant;
         defTran = ud.DefTranchant;
         defMagi = ud.DefMagique;
-        speed = ud.Speed;
+        SetSpeed(ud.Speed);
+    }
+
+    public float GetSpeed()
+    {
+        return speed;
+    }
+    public void SetSpeed(float newValue)
+    {
+        speed = newValue;
+        if(agent != null)
+            agent.speed = newValue;
     }
     public Vector3 VectorZeroY(Vector3 entree)
     {

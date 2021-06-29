@@ -529,6 +529,14 @@ public class Unit : NetworkBehaviour
                 GameObject go = Instantiate(corpse, transform.position, Quaternion.identity);
                 go.GetComponent<Bones>().flesh = corpseFlesh;
                 go.GetComponent<Bones>().bone = corpseBone;
+                go.GetComponent<Bones>().healthMax = maxHealth;
+                go.GetComponent<Bones>().damage = damage;
+                go.GetComponent<Bones>().armureCont = defCont;
+                go.GetComponent<Bones>().armureTran = defTran;
+                go.GetComponent<Bones>().armureMagi = defMagi;
+                go.GetComponent<Bones>().timeAttack = cdAttaque;
+                go.GetComponent<Bones>().speed = speed;
+                go.GetComponent<Bones>().typeOfDamage = typeOfDamage;
                 GameManager.instance.SpawnGameObject(go);
             }
             GameManager.instance.ServerDestroy(gameObject, 1f);
@@ -709,13 +717,6 @@ public class Unit : NetworkBehaviour
             moralSeuilBas = ud.SeuilBasMoral;
             moralSeuilHaut = ud.SeuilHautMoral;
         }
-        maxHealth = ud.MaxHealth;
-        damage = ud.Damage;
-        typeOfDamage = ud.TypeDamage;
-        defCont = ud.DefContandant;
-        defTran = ud.DefTranchant;
-        defMagi = ud.DefMagique;
-        speed = ud.Speed;
         if (agent != null)
             agent.speed = ud.Speed;
         range = ud.Range;
@@ -755,6 +756,16 @@ public class Unit : NetworkBehaviour
         {
             isCorpseRecolteur = ud.IsCorpseRecolteur;
         }
+
+        if (ud.IsZombi)
+            return;
+        maxHealth = ud.MaxHealth;
+        damage = ud.Damage;
+        typeOfDamage = ud.TypeDamage;
+        defCont = ud.DefContandant;
+        defTran = ud.DefTranchant;
+        defMagi = ud.DefMagique;
+        speed = ud.Speed;
     }
     public Vector3 VectorZeroY(Vector3 entree)
     {

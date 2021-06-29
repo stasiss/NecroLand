@@ -16,6 +16,7 @@ MonoBehaviour:
   _name: Necro
   _prefab: {fileID: 8544378339502732227, guid: 35b71034da9ec134986f1be68d6efab6, type: 3}
   _isUndead: 1
+  _isZombi: 0
   _idCorpse: 0
   _probaCorpse: 0
   _bone: 0
@@ -41,6 +42,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2fe90871719cc8c4e85196a13b94ff47, type: 2}
   - {fileID: 11400000, guid: 1eb0511b730f80447b8833267e38feea, type: 2}
   - {fileID: 11400000, guid: 2304c666145586c43b29c6be325dca7b, type: 2}
+  - {fileID: 11400000, guid: 6d751fd605f57904b9836e5bcf2375db, type: 2}
   _isInvisible: 0
   _isDetecteur: 0
   _middleMoral: 0

@@ -179,4 +179,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  res: {fileID: 7757904861657730621, guid: 7d47a16da78e0ca4ea5acb6a3c432854, type: 3}
+  res: {fileID: 8399177116648759520, guid: 246aed337e4e38241994333adb69468c, type: 3}
+  bone: 0
+  flesh: 0
+  healthMax: 0
+  damage: 0
+  armureCont: 0
+  armureTran: 0
+  armureMagi: 0
+  timeAttack: 0
+  speed: 0
+  typeOfDamage: 0

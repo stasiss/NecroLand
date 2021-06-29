@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ac9746cd88c4ed4386b39a61c7d12ff, type: 3}
+  m_Name: peche16
+  m_EditorClassIdentifier: 
+  _id: 16
+  _name: pecheresse
+  _prefab: {fileID: 7634482616725121517, guid: 3279e124ba1ea8d47910e9a22c0a3a0a, type: 3}
+  _isUndead: 1
+  _isZombi: 0
+  _idCorpse: 0
+  _probaCorpse: 25
+  _bone: 1
+  _flesh: 2
+  _projectile: {fileID: 0}
+  _maxHealth: 15
+  _typeDamage: 2
+  _damage: 3
+  _defContandant: 1
+  _defTranchant: 0
+  _defMagique: 0
+  _speed: 2
+  _range: 3
+  _cdAttack: 1
+  _fieldOfView: 12
+  _manaReserve: 1
+  _foodComsomption: 0
+  _skillsList: []
+  _isInvisible: 0
+  _isDetecteur: 0
+  _middleMoral: 0
+  _maxMoral: 0
+  _seuilFuiteMoral: 0
+  _seuilBasMoral: 0
+  _seuilHautMoral: 0
+  _isTransport: 0
+  _maxStock: 0
+  _isRecolteur: 0
+  _isCorpseRecolteur: 0
+  _isTrap: 0
+  _timerLife: 0

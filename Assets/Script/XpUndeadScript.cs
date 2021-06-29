@@ -144,9 +144,7 @@ public class XpUndeadScript : MonoBehaviour
             necro.maxHealth += currentUp.UpPvUnit;
             necro.currentHealth += currentUp.UpPvUnit;
             necro.damage += currentUp.UpDamageUnit;
-            necro.speed += currentUp.UpSpeedUnit;
-            if (necro.speed != 0)
-                necro.agent.speed = necro.speed;
+            necro.SetSpeed(necro.GetSpeed() + currentUp.UpSpeedUnit);
         }
         else
         {
@@ -160,9 +158,7 @@ public class XpUndeadScript : MonoBehaviour
                     oldUnit.maxHealth += currentUp.UpPvUnit;
                     oldUnit.currentHealth += currentUp.UpPvUnit;
                     oldUnit.damage += currentUp.UpDamageUnit;
-                    oldUnit.speed += currentUp.UpSpeedUnit;
-                    if (oldUnit.speed != 0)
-                        oldUnit.agent.speed = oldUnit.speed;
+                    oldUnit.SetSpeed(oldUnit.GetSpeed() + currentUp.UpSpeedUnit);
                 }
                 GameManager.instance.AddUpPvUnit(currentUp.UpPvUnit);
                 GameManager.instance.AddUpDamageUnit(currentUp.UpDamageUnit);

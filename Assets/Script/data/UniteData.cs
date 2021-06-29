@@ -13,6 +13,8 @@ public class UniteData : ScriptableObject
     public GameObject Prefab { get { return _prefab; } }
     [SerializeField] private bool _isUndead;
     public bool IsUndead { get { return _isUndead; } }
+    [SerializeField] private bool _isZombi;
+    public bool IsZombi { get { return _isZombi; } }
     [SerializeField] private int _idCorpse;
     public int IdCorpse { get { return _idCorpse; } }
     [SerializeField] private int _probaCorpse;
